@@ -134,12 +134,18 @@ class Chat:
         api_key: Union[str, AKPool],
         model: str = "gpt-3.5-turbo",
         MsgMaxCount=None,
+        api_base: str = "https://api.openai.com/v1",
+        prompt: str = "",
         **kwargs,
     ):
         self.reset_api_key(api_key)
+        self.api_base = api_base
+        openai.api_base = api_base
         self.model = model
         self._messages = Temque(maxlen=MsgMaxCount)
         self.kwargs = kwargs
+        if prompt != "":
+            self._messages.add_many({"role": "system", "content": prompt})
 
     def reset_api_key(self, api_key: Union[str, AKPool]):
         if isinstance(api_key, AKPool):
