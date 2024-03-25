@@ -30,7 +30,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from oomongo import ODM, mc, mf, mo
 ```
 
-## 创建 ODM
+## 创建ODM
 
 ```python
 class ODM_2(ODM):
@@ -123,7 +123,7 @@ r2.inserted_ids
 | mc.姓名 == mf.re( '小' )                                                       | 正则匹配                                        |
 | \[mc.年龄 > 3\][mc.年龄 < 100]                                                 | 交集（方式一）                                  |
 | [ (mc.年龄 > 3) & (mc.年龄 < 100) ]                                            | 交集（方式二）                                  |
-| [(mc.年龄<30) &#124; (mc.年龄>30) &#124; (mc.年龄==30) &#124; (mc.年龄==None)] | 并集                                            |
+| [(mc.年龄<30)&#124; (mc.年龄>30) &#124; (mc.年龄==30) &#124; (mc.年龄==None)] | 并集                                            |
 | [ (mc.年龄 > 3) - (mc.年龄 > 100) ]                                            | 差集                                            |
 | [ ~(mc.年龄 > 100) ]                                                           | 补集                                            |
 
