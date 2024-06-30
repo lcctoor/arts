@@ -8,13 +8,13 @@
 
 # 作者
 
-[江南雨上](mailto:lcctoor@outlook.com)
+江南雨上
 
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/oa_/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/oa_/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/oa_/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -219,7 +219,7 @@ for _id in [id_128G_黑, id_128G_白, id_128G_白_联通合作]:
 
 4、调用对象方法时，既可以使用位置传参，也可以使用关键词传参。例如，这两种方式都是可行的： `say_hello('程序猿')` 、 `say_hello(name='程序猿')` 。
 
-5、对象方法是以人类易读的文本格式存储在 MongoDB 中的（[查看图示](https://lcctoor.github.io/arts/arts/oodb/ip_static/对象方法.png)），可直接通过 Navicat 等管理工具灵活修改。
+5、对象方法是以人类易读的文本格式存储在 MongoDB 中的（[查看图示](https://lcctoor.github.io/arts/arts/oodb/oa_/对象方法.png)），可直接通过 Navicat 等管理工具灵活修改。
 
 ## 动态属性
 
@@ -264,7 +264,7 @@ print(grade['学生总数量'])  # >>> 105
 
 4、创建动态属性时，必须将所需要的参数值在 `@mpy.dynamic(...)` 的括号内传入。比如：我们定义的 `get_students_count` 需要 `id1, id2, id3, id4` 这四个参数，相对应地，我们在 `@mpy.dynamic(...)` 中传递了 `C1, C2, id3=C3, id4=C4` 这四个参数值。传递参数值时，既可以使用位置传参，也可以使用关键词传参，例如： `C1, C2` 使用了位置传参，而 `id3=C3, id4=C4` 使用了关键词传参。
 
-5、动态属性是以人类易读的文本格式存储在 MongoDB 中的（[查看图示](https://lcctoor.github.io/arts/arts/oodb/ip_static/动态属性.png)），可直接通过 Navicat 等管理工具灵活修改。
+5、动态属性是以人类易读的文本格式存储在 MongoDB 中的（[查看图示](https://lcctoor.github.io/arts/arts/oodb/oa_/动态属性.png)），可直接通过 Navicat 等管理工具灵活修改。
 
 ## 面向对象特性综述
 

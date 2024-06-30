@@ -4,13 +4,13 @@ ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话
 
 # 作者
 
-[江南雨上](mailto:lcctoor@outlook.com)
+江南雨上
 
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/oa_/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/oa_/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/oa_/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -54,7 +54,7 @@ Tony.request('再往后呢?')  # >>> 53
 Lucy.request('再往后呢?')  # >>> 103
 ```
 
-## 流式对话 ([查看演示](https://lcctoor.github.io/arts/arts/openai2/ip_static/流式对话演示.mp4) 👈)
+## 流式对话 ([查看演示](https://lcctoor.github.io/arts_static1/arts/openai2/oas1_/流式对话演示.mp4) 👈)
 
 ```python
 for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
@@ -409,7 +409,7 @@ Ariel.unpin_messages(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 
 [查看相关参数](https://platform.openai.com/docs/api-reference/chat) 👈
 
-## 在命令行对话 ([查看演示](https://lcctoor.github.io/arts/arts/openai2/ip_static/命令行对话演示.mp4) 👈)
+## 在命令行对话 ([查看演示](https://lcctoor.github.io/arts_static1/arts/openai2/oas1_/命令行对话演示.mp4) 👈)
 
 ```cpp
 openai2 add_apikey sk-T92mZYXHLWKt1234gtPKT3BlbkFJ

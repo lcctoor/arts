@@ -11,7 +11,7 @@ record.setdefault('messages', [])
 
 
 def chat_in_cmd(apikeys:list, newchat=False, model='gpt-4-1106-preview', msg_max_count=30):
-    print(f"\n\033[0m您已进入命令行聊天模式, 当前使用'{model}'模型, 请确保您的apikey支持该模型.", end='')
+    print(f"\n\033[0m你已进入命令行聊天模式, 当前使用'{model}'模型, 请确保你的apikey支持该模型.", end='')
     gpt = Chat(api_key=AKPool(apikeys), model=model, msg_max_count=msg_max_count)
     if not newchat:
         gpt.add_dialogs(*record['messages'])

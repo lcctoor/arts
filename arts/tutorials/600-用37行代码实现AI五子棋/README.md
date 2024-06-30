@@ -1,6 +1,6 @@
 # 有颜色版
 
-<h1 align="center"><img src="./ip_static/有颜色版.png" width="44.72%"></h1>
+<h1 align="center"><img src="https://lcctoor.github.io/arts_static1/arts/tutorials/600-用37行代码实现AI五子棋/oas1_/有颜色版.png" width="44.72%"></h1>
 
 ```python
 next = input('''游戏规则:
@@ -39,14 +39,14 @@ while max(a+b+c+d) < 24300000:
         c[j] = x[j] * x[j+22] * x[j+44] * x[j+66] * x[j+88]
         d[j] = x[j] * x[j+24] * x[j+48] * x[j+72] * x[j+96]
 print(''.join("  ".join(str(u[23*w+v]) for v in range(4,19)) + "\n\n" for w in range(5,20)))
-print(f"恭喜，您已取得胜利！总共下了{len(count)//2}步.\n\n")
+print(f"恭喜，你已取得胜利！总共下了{len(count)//2}步.\n\n")
 ```
 
 # 无颜色版
 
 若有颜色版的棋盘乱码，可使用无颜色版。
 
-<h1 align="center"><img src="./ip_static/无颜色版.png" width="44.72%"></h1>
+<h1 align="center"><img src="https://lcctoor.github.io/arts_static1/arts/tutorials/600-用37行代码实现AI五子棋/oas1_/无颜色版.png" width="44.72%"></h1>
 
 ```python
 next = input('''游戏规则:
@@ -85,5 +85,5 @@ while max(a+b+c+d) < 24300000:
         c[j] = x[j] * x[j+22] * x[j+44] * x[j+66] * x[j+88]
         d[j] = x[j] * x[j+24] * x[j+48] * x[j+72] * x[j+96]
 print(''.join("  ".join(str(u[23*w+v]) for v in range(4,19)) + "\n\n" for w in range(5,20)))
-print(f"恭喜，您已取得胜利！总共下了{len(count)//2}步.\n\n")
+print(f"恭喜，你已取得胜利！总共下了{len(count)//2}步.\n\n")
 ```

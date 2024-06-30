@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class='ch_29 ch_30 ch_31 ch_32'><head>
+<title>演示</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<style>
+    * {vertical-align:middle; text-decoration:none; position:relative; padding:0; overflow:auto; outline:none; margin:0; font-family:'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing:border-box; border-width:0; border-style:solid;}
+    .ch_29 {width:100vw; height:100vh; display:block; background-color:white;}
+    .ch_33 {display:block;}
+    .ch_34 {display:inline-grid;}
+    .ch_45 {width:100%; row-gap:1rem; padding:1rem; justify-items:center; height:100%; grid-template-rows:auto 1fr auto; display:inline-grid; column-gap:1rem; background-color:rgba(0, 0, 0, 0.75); align-items:center;}
+    .ch_37 {padding:0.618em 1em 0.618em 1em; border-radius:3em; background-color:rgb(239, 239, 239);}
+    .ch_36:hover {background-color:rgb(249, 249, 249);}
+    .ch_35:active {background-color:transparent;}
+    .ch_43 {white-space:nowrap; scrollbar-width:none; overflow-x:auto; display:inline-block; -ms-overflow-style:none;}
+    .ch_42:not(.ch_exec_goto_scrollLeft) {scroll-snap-type:x mandatory;}
+    .ch_41::-webkit-scrollbar {display:none;}
+    .ch_40 > * {white-space:normal;}
+    .ch_44 {width:100%; scroll-snap-align:start; overflow:auto; margin:0; height:100%; flex-wrap:wrap; display:inline-flex;}
+    .ch_47 {vertical-align:middle; max-width:100%; max-height:100%;}
+    .ch_48 {white-space:pre-wrap; vertical-align:baseline; user-select:text; padding:0.75em 1.5em 0.75em 1.5em; overflow-wrap:break-word; line-height:1.75; font-size:1rem; color:white; border-width:0.1rem; border-radius:0.75em;}
+    * {scrollbar-width:none; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    *::-webkit-scrollbar {display:none;}
+    .ch_46 {color:rgb(233.0, 156.0, 79.0);}
+</style></head>
+<body class='ch_33' style="padding:1rem; height:100%; width:100%;">
+<script>
+"use strict";
+
+                    if (1 + 1 === 2) {
+                        window.ch = new Proxy(
+                            new Map(),
+                            {get: (target, name) => target.get(name), set: (target, name, value) => target.set(name, value)}
+                        )
+                    }
+                    else {
+                        window.ch = {}
+                        console.log('type(ch) is not Map !')
+                    }
+                
+</script><div class='ch_34' style="width:100%; align-items:center; height:100%; column-gap:1rem; grid-template-columns:auto 1fr auto;"><button class='ch_35 ch_36 ch_37' id=ch_38 style="font-size:2.25rem; border-radius:50%; padding:0; height:5rem; width:5rem;">←</button><div class='ch_40 ch_41 ch_42 ch_43' page_id='1' id=ch_15 style="width:100%; height:100%;"><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>唐诗宋词</h1><img class='ch_47' src='oas1_/1.png'><pre class='ch_48'>点击任意诗词标题，即可显示对应的文章</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>猜成语</h1><img class='ch_47' src='oas1_/2.png'><pre class='ch_48'>根据成语的释义，点击你认为正确的成语</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>猜成语</h1><img class='ch_47' src='oas1_/3.png'><pre class='ch_48'>点击正确时，显示为绿色（和题目一样的颜色，表示与题目是匹配的）</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>猜成语</h1><img class='ch_47' src='oas1_/4.png'><pre class='ch_48'>点击错误时，显示为红色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>猜成语</h1><img class='ch_47' src='oas1_/21.png'><pre class='ch_48'>再次点击任意位置，即进入下一题</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/31.png'><pre class='ch_48'>根据释义，在横线处填写你认为正确的单词</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/32.png'><pre class='ch_48'>填写正确时，显示为绿色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/33.png'><pre class='ch_48'>填写错误时，显示为红色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/34.png'><pre class='ch_48'>填写错误时，可按【Backspace】（退格键）消除错误的字符</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/34.png'><pre class='ch_48'>按【9】键，将播放美音; 按【0】键，将播放英音</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/34.png'><pre class='ch_48'>若想显示答案，则按回车键; 若想进入下一题，也按回车键</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语单词 · 记忆</h1><img class='ch_47' src='oas1_/34.png'><pre class='ch_48'>空格键的作用与回车键相同</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>猜单词</h1><img class='ch_47' src='oas1_/8.png'><pre class='ch_48'>根据单词的释义，点击你认为正确的单词</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语词典</h1><img class='ch_47' src='oas1_/9.png'><pre class='ch_48'>在搜索栏输入你想检索的单词或释义</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>英语词典</h1><img class='ch_47' src='oas1_/10.png'><pre class='ch_48'>点击单词的标签进行过滤：
+绿色表示必须包含该标签
+红色表示排除该标签
+黄色表示必须包含所有黄色标签中的至少一个</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/61.png'><pre class='ch_48'>根据灰色方块的位置，在横线处填写你认为正确的元素符号或中文名</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/62.png'><pre class='ch_48'>填写正确时，显示为绿色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/63.png'><pre class='ch_48'>填写错误时，显示为红色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/64.png'><pre class='ch_48'>填写错误时，可按【Backspace】（退格键）消除错误的字符</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/64.png'><pre class='ch_48'>按【0】键，将播放元素的名称</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/65.png'><pre class='ch_48'>若想显示答案，则按回车键; 若想进入下一题，也按回车键</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜元素</h1><img class='ch_47' src='oas1_/65.png'><pre class='ch_48'>空格键的作用与回车键相同</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜位置</h1><img class='ch_47' src='oas1_/71.png'><pre class='ch_48'>根据元素的符号和中文名，点击你认为正确的元素单元格</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜位置</h1><img class='ch_47' src='oas1_/72.png'><pre class='ch_48'>点击正确时，显示为绿色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜位置</h1><img class='ch_47' src='oas1_/73.png'><pre class='ch_48'>点击错误时，显示为灰色</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜位置</h1><img class='ch_47' src='oas1_/74.png'><pre class='ch_48'>点击题目区域，可显示答案</pre></div></div><div class='ch_44'><div class='ch_45'><h1 class='ch_46'>元素周期表 · 猜位置</h1><img class='ch_47' src='oas1_/75.png'><pre class='ch_48'>再次点击任意位置，即可进入下一题</pre></div></div></div><button class='ch_35 ch_36 ch_37' id=ch_49 style="font-size:2.25rem; border-radius:50%; padding:0; height:5rem; width:5rem;">→</button></div>
+<script>
+"use strict";
+
+document.documentElement.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))  // documentElement 即 html 标签
+        document.body.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))
+ch.ch_2 = () => window.innerWidth > window.innerHeight
+ch.ch_3 = (ele, name, value) => {
+            try {ele.setAttribute(name, value)} catch (e) {}
+            try {ele[name] = value} catch (e) {}
+        }
+ch.ch_4 = document.body
+ch.ch_11 = () => {
+            let value = ch.ch_2()
+            if (value)
+                { ch.ch_3(ch.ch_4, 'is_x_screen', 'True') }
+            else
+                { ch.ch_3(ch.ch_4, 'is_x_screen', 'False') }
+            return value
+        }
+ch.ch_11()
+ch.ch_16 = document.getElementById("ch_15")
+ch.ch_17 = new Map([["current_index", null]])
+ch.ch_12 = (items, last_value=null) =>
+            (outward_dict=null) =>
+                value => {
+                    if (outward_dict && outward_dict.has(value)) {value = outward_dict.get(value)}
+                    if (last_value !== value) {
+                        last_value = value
+                        for (let [set_value, inward_dict] of items) {
+                            if (inward_dict && inward_dict.has(value))
+                                {set_value(inward_dict.get(value))}
+                            else
+                                {set_value(value)}
+                        }
+                    }
+                }
+ch.ch_1 = new Map()
+ch.ch_5 = (obj, command) => {
+            if (! ch.ch_1.has(obj)) { ch.ch_1.set(obj, new Map()) }
+            let indexes = ch.ch_1.get(obj)
+            if (! indexes.has(command)) { indexes.set(command, 0) }
+            let new_index = indexes.get(command) + 1
+            indexes.set(command, new_index)
+            return new_index
+        }
+ch.ch_6 = (obj, command, index) => ch.ch_1.get(obj).get(command) === index
+ch.ch_7 = (func) => new Promise(resolve => requestAnimationFrame(() => {func(); resolve()}))
+ch.ch_8 = async (ele, scrollLeft, seconds=0) => {
+            let command_index = ch.ch_5(ele, 'scrollLeft')
+            if (seconds) {
+                let start_time = performance.now()  // 立即获取当前时间，以尽可能让时间准确
+                ele.classList.add('ch_exec_goto_scrollLeft')  // 立即设为 ch_exec_goto_scrollLeft
+                let milliseconds = seconds * 1000
+                let end_time = start_time + milliseconds
+                let start_scrollLeft = ele.scrollLeft
+                let distance = scrollLeft - start_scrollLeft
+                let gradient = distance / milliseconds  // 斜率
+                let state = {'finished': false}
+                let scroll = () => {
+                    let current_time = performance.now()
+                    if (current_time < end_time)
+                        {ele.scrollLeft = gradient * (current_time - start_time) + start_scrollLeft}  // y = k*x + b
+                    else
+                        {state['finished'] = true}
+                }
+                while (true) {
+                    if (! ch.ch_6(ele, 'scrollLeft', command_index)) {return null}
+                    await ch.ch_7(scroll)
+                    if (state['finished']) break
+                }
+                ele.classList.remove('ch_exec_goto_scrollLeft')
+                await ch.ch_7(() => {ele.scrollLeft = scrollLeft})  // 两个功能：确保最终位置正确、激活同步
+            }
+            else
+                await ch.ch_7(() => {ele.scrollLeft = scrollLeft})
+        }
+ch.ch_14 = (pages_box, current_index, scroll_seconds) =>
+            async value => {
+                let index = Number(value)
+                if (Number.isInteger(index))  {  // 3.0、4.0 这种格式也会表现为 True
+                    index = parseInt(index)  // 转化为 3、4 这种真正的整数
+                    if ( index !== current_index.get('current_index') ) {
+                        let page = pages_box.children[index - 1]
+                        if (page) {
+                            current_index.set('current_index', index)
+                            if (scroll_seconds)
+                                await ch.ch_8(pages_box, page.offsetLeft, scroll_seconds)
+                            else
+                                pages_box.scrollLeft = page.offsetLeft
+                        }
+                    }
+                }
+            }
+ch.ch_21 = ch.ch_14(ch.ch_16, ch.ch_17, 0)
+ch.ch_22 = new Map([])
+ch.ch_23 = [ch.ch_21, ch.ch_22]
+ch.ch_26 = value => ch.ch_3(ch.ch_16, 'page_id', value)
+ch.ch_27 = new Map([])
+ch.ch_28 = [ch.ch_26, ch.ch_27]
+ch.ch_13 = [ch.ch_23, ch.ch_28]
+ch.ch_18 = new Map([])
+ch.ch_24 = new Map([])
+ch.ch_19 = ch.ch_12(ch.ch_13, null)
+ch.ch_20 = (pages_box, current_index, sync_value) => {
+            pages_box.addEventListener('scroll',
+                () => {
+                    if (! pages_box.classList.contains('ch_exec_goto_scrollLeft')) {
+                        let index = Math.round(pages_box.scrollLeft / pages_box.clientWidth) + 1
+                        if (index !== current_index.get('current_index')) {
+                            current_index.set('current_index', index)
+                            sync_value( String(index) )
+                        }
+                    }
+                }
+            )
+        }
+ch.ch_20(ch.ch_16, ch.ch_17, ch.ch_19(ch.ch_18))
+ch.ch_9 = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+ch.ch_25 = (sync_value, ele, prop_name, event_name='') => {
+            new ch.ch_9(
+                (records, _) => {sync_value(ele.getAttribute(prop_name))}
+            ).observe(ele, { attributes:true, attributeFilter:[prop_name] })
+            if (event_name)
+                { ele.addEventListener(event_name, () => sync_value(ele[prop_name])) }
+        }
+ch.ch_25(ch.ch_19(ch.ch_24), ch.ch_16, "page_id", null)
+ch.ch_39 = document.getElementById("ch_38")
+ch.ch_39.addEventListener('click', async () => {ch.ch_16.setAttribute('page_id', String(Math.max(1, Number(ch.ch_16.getAttribute('page_id')) - 1)))})
+ch.ch_50 = document.getElementById("ch_49")
+ch.ch_50.addEventListener('click', async () => {ch.ch_16.setAttribute('page_id', String(Math.min(ch.ch_16.childElementCount, Number(ch.ch_16.getAttribute('page_id')) + 1)))})
+
+</script>
+</body>
+</html>
