@@ -17,6 +17,9 @@ class Coolstr:
         self.string = str(*args, **kwargs)
     
     def __str__(self): return self.string
+
+    @property
+    def barename(self): return self.string.split('.', 1)[0]
     
     @property
     def suffixes(self):

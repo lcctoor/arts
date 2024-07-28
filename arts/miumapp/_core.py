@@ -4,7 +4,7 @@ from weakref import WeakKeyDictionary
 from os.path import abspath
 from pathlib import Path
 from json import loads as json_loads
-from typing import Dict, Any
+from typing import Dict, Any, final
 from tornado.web import RequestHandler, Application
 from pyppeteer.launcher import Launcher, DEFAULT_ARGS
 from pyppeteer.page import Page
@@ -94,6 +94,7 @@ class App:
         请在子类中覆盖此方法
         '''
     
+    @final
     async def create_window(self, *, url: str='', html: str='', title='', as_app=True, cache_dir: str|Path=None) -> BarePage:       
         cache_dir = Path(cache_dir or caches_tool.get_one_dir())
         cache_dir.mkdir(parents=True, exist_ok=True)
@@ -141,6 +142,7 @@ class App:
         await page.evaluateOnNewDocument(js_content)
         return page
 
+    @final
     async def start(self):
 
         class home_text(RequestHandler):

@@ -14,17 +14,17 @@
 * 可通过传递 URL 或 HTML 文本这两种数据之一来决定窗口内容。
 * 可通过 Nuitka 打包成可移植二进制文件。
 
-我们所采用的技术栈组合是经过深思熟虑的，通过结合 **Python** 与  **HTML** 这两种高效、灵活、易用的技术栈，意味着您正在选择一个能够大大减少开发时间、简化开发流程、拥有丰富的第三方扩展的解决方案。与其它工具相比，我们的优势在于对新技术的快速适应、更为强大的社区支持，以及持续的更新和改进。
+我们所采用的技术栈组合是经过深思熟虑的，通过结合 **Python** 与  **HTML** 这两种高效、灵活、易用的技术栈，意味着你正在选择一个能够大大减少开发时间、简化开发流程、拥有丰富的第三方扩展的解决方案。与其它工具相比，我们的优势在于对新技术的快速适应、更为强大的社区支持，以及持续的更新和改进。
 
 # 作者
 
-[江南雨上](mailto:lcctoor@outlook.com)
+江南雨上
 
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.com/index.html) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.com/cdn/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.com/cdn/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.com/cdn/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -43,9 +43,9 @@ from miumapp.demo import Introduce
 asyncio.run( Introduce().start() )
 ```
 
-运行后，若显示出与图片 [效果图](https://lcctoor.github.io/arts/arts/miumapp/ip_static/DemoUI.png) 所示一致的效果，则说明安装成功。
+运行后，若显示出与图片 [效果图](https://lcctoor.com/miumapp/oa_/DemoUI.png) 所示一致的效果，则说明安装成功。
 
-# 教程 ([查看美化版](https://lcctoor.github.io/arts/arts/miumapp) 👈)
+# 教程
 
 本文将以简洁的方式向你介绍核心知识，而不会让你被繁琐的术语所淹没。
 

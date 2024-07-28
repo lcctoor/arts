@@ -1,7 +1,8 @@
 from json import dumps as jsonDumps
-from typing import List, Tuple, Union, Literal
+from typing import List, Tuple, Union
 from openai import OpenAI
 from .chat import system_msg, user_msg, assistant_msg, Chat, AKPool
+from .chat_model import chat_models
 
 
 class GroupChat(Chat):
@@ -34,8 +35,7 @@ class GroupChat(Chat):
                     max_retries=None,
                     http_client=None,
                     # request_kwargs
-                    model: Literal["gpt-4-1106-preview", "gpt-4-vision-preview", "gpt-4", "gpt-4-0314", "gpt-4-0613",
-                                    "gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0613", "gpt-3.5-turbo"] = "gpt-3.5-turbo",
+                    model: chat_models = "gpt-3.5-turbo",
                     # Chat
                     msg_max_count=None,
                     # kwargs

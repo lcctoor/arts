@@ -4,13 +4,13 @@
 
 # 作者
 
-[江南雨上](mailto:lcctoor@outlook.com)
+江南雨上
 
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.com/index.html) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.com/cdn/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.com/cdn/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.com/cdn/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -18,7 +18,7 @@
 pip install oomongo
 ```
 
-# 教程 ([查看美化版](https://lcctoor.github.io/arts/arts/oomongo) 👈)
+# 教程
 
 本文将以简洁的方式向你介绍核心知识，而不会让你被繁琐的术语所淹没。
 

@@ -1,8 +1,10 @@
 from json import dumps as jsonDumps
 from json import loads as jsonLoads
 from pathlib import Path
-from typing import List, Literal
+from typing import List, Dict, Literal, Iterable
+from base64 import b64encode
 from openai import OpenAI, AsyncOpenAI
+from .chat_model import chat_models
 
 
 class AKPool:
@@ -96,9 +98,45 @@ class Temque:
         return que
 
 
+if 0 == 1:
+    # 维护时参考：
+    from openai.types.chat.chat_completion_user_message_param import ChatCompletionUserMessageParam
+    from openai.types.chat.chat_completion_content_part_param import ChatCompletionContentPartParam
+    from openai.types.chat.chat_completion_content_part_text_param import ChatCompletionContentPartTextParam
+    from openai.types.chat.chat_completion_content_part_image_param import ChatCompletionContentPartImageParam
+    content: str | Iterable[ChatCompletionContentPartTextParam, ChatCompletionContentPartImageParam]
+    content: str | Iterable[Dict[Literal['type', 'text'], str], Dict[Literal['type', 'image_url'], str|dict]]
+
+class Multimodal_Part:
+    def __init__(self, part: dict):
+        self.part = part
+    
+    @classmethod
+    def text(cls, _text: str):
+        return cls({'type': 'text', 'text': _text})
+    
+    @classmethod
+    def jpeg(cls, _bytestring: bytes):
+        return cls({'type': 'image_url', 'image_url': {'url': f"data:image/jpeg;base64,{b64encode(_bytestring).decode('utf8')}"}})
+    
+    @classmethod
+    def png(cls, _bytestring: bytes):
+        return cls({'type': 'image_url', 'image_url': {'url': f"data:image/png;base64,{b64encode(_bytestring).decode('utf8')}"}})
+
+def get_multimodal_content(text: str|Multimodal_Part|dict, *msgs):
+    content = []
+    for x in (text,) + msgs:
+        if x:
+            if type(x) is str: x = Multimodal_Part.text(x)
+            if type(x) is Multimodal_Part: x = x.part
+            content.append(x)
+    if len(content) == 1 and content[0]['type'] == 'text': content = content[0]['text']
+    return content or ''
+
+
 class Chat:
     """
-    [文档](https://lcctoor.github.io/arts/arts/openai2)
+    [文档](https://pypi.org/project/openai2)
 
     获取api_key:
     * [获取链接1](https://platform.openai.com/account/api-keys)
@@ -108,18 +146,13 @@ class Chat:
     recently_request_data: dict  # 最近一次请求所用的参数
 
     def __init__(self,
-                 # kwargs
                  api_key: str|AKPool,
                  base_url: str = None,  # base_url 参数用于修改基础URL
                  timeout=None,
                  max_retries=None,
                  http_client=None,
-                 # request_kwargs
-                 model: Literal["gpt-4-1106-preview", "gpt-4-vision-preview", "gpt-4", "gpt-4-0314", "gpt-4-0613",
-                                "gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0613", "gpt-3.5-turbo"] = "gpt-3.5-turbo",
-                 # Chat
+                 model: chat_models = "gpt-3.5-turbo",
                  msg_max_count: int=None,
-                 # kwargs
                  **kwargs,
                  ):
         api_base = kwargs.pop('api_base', None)
@@ -143,8 +176,9 @@ class Chat:
         else:
             self._akpool = AKPool([api_key])
 
-    def request(self, text: str=None, **kwargs):
-        messages = [{"role": "user", "content": text}]
+    def request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
+        content = get_multimodal_content(text, *msgs)
+        messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
@@ -160,8 +194,9 @@ class Chat:
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         return answer
 
-    def stream_request(self, text: str=None, **kwargs):
-        messages = [{"role": "user", "content": text}]
+    def stream_request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
+        content = get_multimodal_content(text, *msgs)
+        messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
@@ -180,8 +215,9 @@ class Chat:
                 yield content
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
 
-    async def async_request(self, text: str=None, **kwargs):
-        messages = [{"role": "user", "content": text}]
+    async def async_request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
+        content = get_multimodal_content(text, *msgs)
+        messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
@@ -197,8 +233,9 @@ class Chat:
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         return answer
 
-    async def async_stream_request(self, text: str=None, **kwargs):
-        messages = [{"role": "user", "content": text}]
+    async def async_stream_request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
+        content = get_multimodal_content(text, *msgs)
+        messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {

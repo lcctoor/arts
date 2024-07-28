@@ -4,8 +4,8 @@
 
 # 作者信息
 
-昵称：江南雨上
+江南雨上
 
-[主页](https://lcctoor.github.io/arts/) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.com/index.html) \| [微信](https://lcctoor.com/cdn/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.com/cdn/DonationQRC-0rmb.jpg)
 
-# [查看展示](https://lcctoor.github.io/arts/) 👈
+# [查看展示](https://lcctoor.com/index.html) 👈

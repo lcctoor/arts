@@ -1,16 +1,16 @@
 # 项目描述
 
-ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
+ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
 
 # 作者
 
-[江南雨上](mailto:lcctoor@outlook.com)
+江南雨上
 
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.com/index.html) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.com/cdn/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.com/cdn/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.com/cdn/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -24,7 +24,7 @@ pip install openai2
 
 [获取链接2](https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key)
 
-# 教程 ([查看美化版](https://lcctoor.github.io/arts/arts/openai2) 👈)
+# 教程
 
 ## 导入
 
@@ -44,17 +44,17 @@ Lucy = Chat(api_key=api_key, model="gpt-3.5-turbo")  # 每个实例可使用 相
 ## 对话
 
 ```python
-Tony.request('自然数50的后面是几?')  # >>> 51
-Lucy.request('自然数100的后面是几?')  # >>> 101
+Tony.request('自然数50的后面是几?')  # >>> '51'
+Lucy.request('自然数100的后面是几?')  # >>> '101'
 
-Tony.request('再往后是几?')  # >>> 52
-Lucy.request('再往后是几?')  # >>> 102
+Tony.request('再往后是几?')  # >>> '52'
+Lucy.request('再往后是几?')  # >>> '102'
 
-Tony.request('再往后呢?')  # >>> 53
-Lucy.request('再往后呢?')  # >>> 103
+Tony.request('再往后呢?')  # >>> '53'
+Lucy.request('再往后呢?')  # >>> '103'
 ```
 
-## 流式对话 ([查看演示](https://lcctoor.github.io/arts/arts/openai2/ip_static/流式对话演示.mp4) 👈)
+## 流式对话 ([查看演示](https://lcctoor.com/openai2/oa_/流式对话演示.mp4) 👈)
 
 ```python
 for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
@@ -108,6 +108,38 @@ async for answer in Tony.async_stream_request('世界上最大的海洋是哪个
 洋
 。
 ```
+
+## 多模态对话（gpt-4o）
+
+```python
+import pathlib
+from openai2 import Chat, Multimodal_Part
+
+
+Bruce = Chat(api_key='sk-jg93...', model="gpt-4o")
+
+
+pic = pathlib.Path(rf'C:\鼠标.jpeg').read_bytes()
+
+answer = Bruce.request(
+
+    '下面这张图片里画了什么？',
+  
+    Multimodal_Part.jpeg(pic)
+)
+
+print(answer)  # >>> '这张图片里画了一个鼠标。'
+```
+
+注：
+
+1、Multimodal_Part 除了 jpeg 方法以外，还有 png、text 等方法。
+
+2、对于 str 型对象，以下这两种写法是等价的：`Bruce.request(..., '这张图片里画了什么', ...)`、`Bruce.request(..., Multimodal_Part.text('这张图片里画了什么'), ...)`。
+
+3、多模态对话支持同步对话、异步对话、同步流式对话、异步流式对话…… 相对于普通对话，唯一的区别就是支持多模态。
+
+4、目前已知支持多模态对话的模型有：gpt-4o、gpt-4o-mini、gpt-4o-2024-05-13、gpt-4o-mini-2024-07-18。
 
 ## 对话回滚
 
@@ -409,7 +441,7 @@ Ariel.unpin_messages(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 
 [查看相关参数](https://platform.openai.com/docs/api-reference/chat) 👈
 
-## 在命令行对话 ([查看演示](https://lcctoor.github.io/arts/arts/openai2/ip_static/命令行对话演示.mp4) 👈)
+## 在命令行对话 ([查看演示](https://lcctoor.com/openai2/oa_/命令行对话演示.mp4) 👈)
 
 ```cpp
 openai2 add_apikey sk-T92mZYXHLWKt1234gtPKT3BlbkFJ
