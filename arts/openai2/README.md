@@ -24,7 +24,7 @@ pip install openai2
 
 [获取链接2](https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key)
 
-# 教程
+# 教程 ([查看美化版](https://github.com/lcctoor/arts/blob/main/arts/openai2/README.md#项目描述) 👈)
 
 ## 导入
 

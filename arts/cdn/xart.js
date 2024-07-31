@@ -9,7 +9,7 @@ xart.big_img_template = `<img loading="lazy" src='{{src}}' onclick="xart.show('{
 
 xart.art_title = `<h1>{{title}}</h1>`
 xart.min_title = `<mintitle>{{title}}</mintitle>`
-xart.go_home_box = `<div class='go_home_box'>\n<button class="go_home" onclick="xart.show('/index.html')">我的主页</button> 👈</div>`
+xart.go_home_box = `<div class='go_home_box'>\n<button class="go_home" onclick="xart.show('https://lcctoor.com/index.html')">我的主页</button> 👈</div>`
 xart.portrait_template = `<img class="portrait" loading="lazy" src='{{src}}'>`
 
 xart.show = (src) => {event.preventDefault(); window.open(src, '_blank')}
