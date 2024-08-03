@@ -20,7 +20,7 @@ Cliapi 是一个专为 Python 初学者设计的 WEB 包，目的是让学者能
 pip install cliapi
 ```
 
-# 教程 ([查看美化版](https://github.com/lcctoor/arts/blob/main/arts/cliapi/README.md#项目描述) 👈)
+# 教程
 
 ## 运行一个服务
 

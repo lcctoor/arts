@@ -67,10 +67,10 @@ items = {'冷空气': 0, '沙尘天气': 0, '地震': 0, '地质灾害': 0, '火
 r = re.findall(匹配模式, text)
 
 for 左数量词, 灾害名称, 右数量词 in r:
-if (灾害名称 in items) and (左数量词 or 右数量词):
-数量词 = 左数量词 or 右数量词
-num = int(re.findall('\d+', 数量词)[0])
-items[灾害名称] += num
+    if (灾害名称 in items) and (左数量词 or 右数量词):
+        数量词 = 左数量词 or 右数量词
+        num = int(re.findall('\d+', 数量词)[0])
+        items[灾害名称] += num
 print(items)
 </textarea>
 
