@@ -2,7 +2,7 @@ from json import dumps as jsonDumps
 from json import loads as jsonLoads
 from pathlib import Path
 from typing import List, Dict, Literal, Iterable
-from base64 import b64encode
+from base64 import b64encode, b64decode
 from openai import OpenAI, AsyncOpenAI
 from .chat_model import chat_models
 
@@ -167,7 +167,7 @@ class Chat:
 
         self.reset_api_key(api_key)
         self._kwargs = kwargs
-        self._request_kwargs = {'model':model}
+        self._request_kwargs = {'model': model}
         self._messages = Temque(maxlen=msg_max_count)
     
     def reset_api_key(self, api_key: str|AKPool):
@@ -284,7 +284,59 @@ class Chat:
         '''
         messages = [dict(x) for x in ms]
         self._messages.add_many(*messages)
-        
+
+    def dalle(self,
+               *args,
+               size: Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]='1024x1024',
+               image_count = 1,
+               quality: Literal["standard", "hd"]='standard',
+               return_format: Literal["url", "bytes"]='bytes',
+               **kwargs
+        ):
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        kvs = {
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            'prompt': args[0],
+            'size': size,
+        }
+        if image_count and image_count != 1: kvs['n'] = image_count
+        if quality and quality != 'standard': kvs['quality'] = quality
+        if return_format == 'bytes':
+            kvs['response_format'] = 'b64_json'
+            return [b64decode(img.b64_json) for img in OpenAI(api_key=api_key, **self._kwargs).images.generate(**kvs).data]
+        else:
+            kvs['response_format'] = 'url'
+            return [img.url for img in OpenAI(api_key=api_key, **self._kwargs).images.generate(**kvs).data]
+
+    async def async_dalle(self,
+               *args,
+               size: Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]='1024x1024',
+               image_count = 1,
+               quality: Literal["standard", "hd"]='standard',
+               return_format: Literal["url", "bytes"]='bytes',
+               **kwargs
+        ):
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        kvs = {
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            'prompt': args[0],
+            'size': size,
+        }
+        if image_count and image_count != 1: kvs['n'] = image_count
+        if quality and quality != 'standard': kvs['quality'] = quality
+        if return_format == 'bytes':
+            kvs['response_format'] = 'b64_json'
+            return [b64decode(img.b64_json) for img in (await AsyncOpenAI(api_key=api_key, **self._kwargs).images.generate(**kvs)).data]
+        else:
+            kvs['response_format'] = 'url'
+            return [img.url for img in (await AsyncOpenAI(api_key=api_key, **self._kwargs).images.generate(**kvs)).data]
+    
     def __getattr__(self, name):
         match name:  # 兼容旧代码
             case 'asy_request':

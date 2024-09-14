@@ -1,6 +1,6 @@
 # 项目描述
 
-ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
+ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对话（逐字显示）、生成图像（DALL·E）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
 
 # 作者
 
@@ -112,14 +112,14 @@ async for answer in Tony.async_stream_request('世界上最大的海洋是哪个
 ## 多模态对话（gpt-4o）
 
 ```python
-import pathlib
+from pathlib import Path
 from openai2 import Chat, Multimodal_Part
 
 
 Bruce = Chat(api_key='sk-jg93...', model="gpt-4o")
 
 
-pic = pathlib.Path(rf'C:\鼠标.jpeg').read_bytes()
+pic = Path(rf'C:\鼠标.jpeg').read_bytes()
 
 answer = Bruce.request(
 
@@ -133,7 +133,7 @@ print(answer)  # >>> '这张图片里画了一个鼠标。'
 
 注：
 
-1、Multimodal_Part 除了 jpeg 方法以外，还有 png、text 等方法。
+1、Multimodal_Part 除了 jpeg 方法以外，还有 png、text …… 等方法。
 
 2、对于 str 型对象，以下这两种写法是等价的：`Bruce.request(..., '这张图片里画了什么', ...)`、`Bruce.request(..., Multimodal_Part.text('这张图片里画了什么'), ...)`。
 
@@ -269,6 +269,74 @@ print(answer)  # >>> 非常抱歉，我刚才的回答有些不适当。1+1=2, 1
 ```
 
 注：对话导出与导入可以穿插在对话中的任何时刻。
+
+## 生成图像（DALL·E）
+
+返回图片的二进制：
+
+```python
+from pathlib import Path
+from openai2 import Chat
+
+Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+images = Tony.dalle('请画一只猫', image_count=2)
+
+for i, x in enumerate(images):
+    Path(f"第{i}张.png").write_bytes(x)
+```
+
+返回图片的URL：
+
+```python
+from pathlib import Path
+from openai2 import Chat
+
+Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+images = Tony.dalle('请画一只猫', image_count=2, return_format='url')
+
+for i, url in enumerate(images):
+    print(f"第{i}张的URL是：", url)
+```
+
+## 异步生成图像（DALL·E）
+
+返回图片的二进制：
+
+```python
+import asyncio
+from pathlib import Path
+from openai2 import Chat
+
+async def main():
+    Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+    images = await Tony.async_dalle('请画一只猫', image_count=2)
+    
+    for i, x in enumerate(images):
+        Path(f"第{i}张.png").write_bytes(x)
+
+asyncio.run(main())
+```
+
+返回图片的URL：
+
+```python
+import asyncio
+from pathlib import Path
+from openai2 import Chat
+
+async def main():
+    Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+    images = await Tony.async_dalle('请画一只猫', image_count=2, return_format='url')
+    
+    for i, url in enumerate(images):
+        print(f"第{i}张的URL是：", url)
+
+asyncio.run(main())
+```
 
 ## 群聊多角色模拟
 
