@@ -123,14 +123,16 @@ class Multimodal_Part:
     def png(cls, _bytestring: bytes):
         return cls({'type': 'image_url', 'image_url': {'url': f"data:image/png;base64,{b64encode(_bytestring).decode('utf8')}"}})
 
-def get_multimodal_content(text: str|Multimodal_Part|dict, *msgs):
+
+def get_multimodal_content(*speeches: str|Multimodal_Part|dict):
     content = []
-    for x in (text,) + msgs:
+    for x in speeches:
         if x:
             if type(x) is str: x = Multimodal_Part.text(x)
             if type(x) is Multimodal_Part: x = x.part
             content.append(x)
-    if len(content) == 1 and content[0]['type'] == 'text': content = content[0]['text']
+    if len(content) == 1 and content[0]['type'] == 'text':
+        content = content[0]['text']
     return content or ''
 
 
@@ -176,8 +178,8 @@ class Chat:
         else:
             self._akpool = AKPool([api_key])
 
-    def request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
-        content = get_multimodal_content(text, *msgs)
+    def request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
+        content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
@@ -194,8 +196,8 @@ class Chat:
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         return answer
 
-    def stream_request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
-        content = get_multimodal_content(text, *msgs)
+    def stream_request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
+        content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
@@ -215,8 +217,8 @@ class Chat:
                 yield content
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
 
-    async def async_request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
-        content = get_multimodal_content(text, *msgs)
+    async def async_request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
+        content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
@@ -233,8 +235,8 @@ class Chat:
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         return answer
 
-    async def async_stream_request(self, text: str|Multimodal_Part|dict, *msgs, **kwargs):
-        content = get_multimodal_content(text, *msgs)
+    async def async_stream_request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
+        content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
         messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
@@ -286,7 +288,7 @@ class Chat:
         self._messages.add_many(*messages)
 
     def dalle(self,
-               *args,
+               *speeches,
                size: Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]='1024x1024',
                image_count = 1,
                quality: Literal["standard", "hd"]='standard',
@@ -299,7 +301,7 @@ class Chat:
         kvs = {
             **self._request_kwargs,  # 全局参数
             **kwargs,  # 单次请求的参数覆盖全局参数
-            'prompt': args[0],
+            'prompt': speeches[0],
             'size': size,
         }
         if image_count and image_count != 1: kvs['n'] = image_count
@@ -312,7 +314,7 @@ class Chat:
             return [img.url for img in OpenAI(api_key=api_key, **self._kwargs).images.generate(**kvs).data]
 
     async def async_dalle(self,
-               *args,
+               *speeches,
                size: Literal["256x256", "512x512", "1024x1024", "1792x1024", "1024x1792"]='1024x1024',
                image_count = 1,
                quality: Literal["standard", "hd"]='standard',
@@ -325,7 +327,7 @@ class Chat:
         kvs = {
             **self._request_kwargs,  # 全局参数
             **kwargs,  # 单次请求的参数覆盖全局参数
-            'prompt': args[0],
+            'prompt': speeches[0],
             'size': size,
         }
         if image_count and image_count != 1: kvs['n'] = image_count
@@ -338,29 +340,22 @@ class Chat:
             return [img.url for img in (await AsyncOpenAI(api_key=api_key, **self._kwargs).images.generate(**kvs)).data]
     
     def __getattr__(self, name):
-        match name:  # 兼容旧代码
-            case 'asy_request':
-                return self.async_request
-            case 'forge':
-                return self.add_dialogs
-            case 'pin':
-                return self.pin_messages
-            case 'unpin':
-                return self.unpin_messages
+        # 兼容旧项目
+        match name:
+            case 'asy_request': return self.async_request
+            case 'forge': return self.add_dialogs
+            case 'pin': return self.pin_messages
+            case 'unpin': return self.unpin_messages
             case 'dump':
-                return self._dump
+                def _dump(fpath):
+                    jt = jsonDumps(self.fetch_messages(), ensure_ascii=False)
+                    Path(fpath).write_text(jt, encoding="utf8")
+                    return True
+                return _dump
             case 'load':
-                return self._load
+                def _load(fpath):
+                    jt = Path(fpath).read_text(encoding="utf8")
+                    self._messages.add_many(*jsonLoads(jt))
+                    return True
+                return _load
         raise AttributeError(name)
-
-    def _dump(self, fpath: str):
-        """ 存档 """
-        jt = jsonDumps(self.fetch_messages(), ensure_ascii=False)
-        Path(fpath).write_text(jt, encoding="utf8")
-        return True
-    
-    def _load(self, fpath: str):
-        """ 载入存档 """
-        jt = Path(fpath).read_text(encoding="utf8")
-        self._messages.add_many(*jsonLoads(jt))
-        return True

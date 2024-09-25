@@ -289,7 +289,6 @@ for i, x in enumerate(images):
 返回图片的URL：
 
 ```python
-from pathlib import Path
 from openai2 import Chat
 
 Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
@@ -324,7 +323,6 @@ asyncio.run(main())
 
 ```python
 import asyncio
-from pathlib import Path
 from openai2 import Chat
 
 async def main():
