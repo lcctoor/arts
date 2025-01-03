@@ -1,6 +1,6 @@
 # 项目描述
 
-ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对话（逐字显示）、生成图像（DALL·E）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
+ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对话（逐字显示）、生成图像（DALL·E）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、限制历史消息数量、异步请求。
 
 # 作者
 
@@ -506,20 +506,3 @@ Ariel.unpin_messages(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 3、`openai2.Chat.async_request` 与 `openai2.Chat.async_stream_request` 底层调用了 `openai.AsyncOpenAI.chat.completions.create`，支持 `openai.AsyncOpenAI.chat.completions.create` 的所有参数。
 
 [查看相关参数](https://platform.openai.com/docs/api-reference/chat) 👈
-
-## 在命令行对话 ([查看演示](https://lcctoor.com/openai2/oa_/命令行对话演示.mp4) 👈)
-
-```cpp
-openai2 add_apikey sk-T92mZYXHLWKt1234gtPKT3BlbkFJ
-openai2 chat
-```
-
-指令集
-
-| 指令                               | 功能                         | 说明                     |
-| ---------------------------------- | ---------------------------- | ------------------------ |
-| openai2  add_apikey  你的apikey | 添加 1 个 apikey             | 如需添加多个，可执行多次 |
-| openai2  read_apikey              | 查看所有 apikey              |                          |
-| openai2  clear_apikey             | 清除所有 apikey              |                          |
-| openai2  chat                     | 继续上次的对话               |                          |
-| openai2  newchat                  | 清空对话记录, 然后开始新对话 |                          |

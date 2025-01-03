@@ -20,7 +20,8 @@ xart.audio_suffixes = ['flac', 'mp3', 'ogg']
 
 xart.base_dir = './'
 xart.modify_src = (src) => {
-    if (src.startsWith('/') || src.includes('//')) {return src}
+    if (src.includes('//')) {return src}
+    if (src.startsWith('/')) {return './..' + src}
     else {return xart.base_dir + src}
 }
 
