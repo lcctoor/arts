@@ -1,15 +1,23 @@
 *稿纸*
-*test*
 
+ig_**
 _ig_**
-dev.**
-op_**
 
-*.cmd
+dev.**
 *.dev.html
 *.dev.mp4
+dev_**
+
+*test*
+_test.py
+test.py
+
+# oa_: only arts _part1
+
+*.cmd
+
 art.json
-pyproject.toml
+_art.json
 
 ################################################################################################## 默认
 
