@@ -4,8 +4,8 @@
 
 # 作者信息
 
-江南雨上
+许灿标
 
-[主页](https://lcctoor.com/index.html) \| [微信](https://lcctoor.com/cdn/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.com/cdn/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.com/index.html) \| [微信](https://lcctoor.com/cdn/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.com/cdn/DonationQRC-0rmb.jpg)
 
 # [查看展示](https://lcctoor.com/index.html) 👈
