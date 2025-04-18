@@ -1,13 +1,18 @@
-# 共同
-_ig_**
 *稿纸*
-*test*
-发布.cmd
 
-# 其它
-_g_**
-pyproject.toml
-/arts/index.html
+ig_**
+_ig_**
+
+*test*
+_test.py
+test.py
+
+# oa_: only arts _part1
+
+*.cmd
+
+art.json
+_art.json
 
 ################################################################################################## 默认
 
