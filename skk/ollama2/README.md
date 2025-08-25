@@ -41,7 +41,7 @@ pip install skk
 ## 创建对话
 
 ```python
-from skk.ollama import Chat
+from skk.ollama2 import Chat
 
 denny = Chat(model='deepseek-r1:7b')
 ```

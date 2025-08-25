@@ -11,7 +11,7 @@ name = "skk"
 description = "一个封装了 Python 常用功能的工具库，帮助你更高效地开发应用。"
 authors = [{name = "许灿标", email = "lcctoor@outlook.com"}]
 
-version = "2025.8.23"
+version = "2025.8.26"
 dependencies = ["numpy", "pymysql", "aiomysql", "pymongo", "motor", "tornado", "openai", "asyncpg"]
 
 readme = "README.md"

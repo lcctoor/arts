@@ -6,7 +6,7 @@ ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对
 
 # 安装
 
-```bash
+```
 pip install skk
 ```
 
@@ -17,7 +17,7 @@ pip install skk
 ## 导入
 
 ```python
-from skk.openai import Chat
+from skk.openai2 import Chat
 ```
 
 ## 创建对话
@@ -66,7 +66,7 @@ for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
 
 ```python
 import asyncio
-from skk.openai import Chat
+from skk.openai2 import Chat
 
 Tony = Chat(api_key=api_key, model="gpt-3.5-turbo")
 
@@ -101,7 +101,7 @@ async for answer in Tony.async_stream_request('世界上最大的海洋是哪个
 
 ```python
 from pathlib import Path
-from skk.openai import Chat, Multimodal_Part
+from skk.openai2 import Chat, Multimodal_Part
 
 
 Bruce = Chat(api_key='sk-jg93...', model="gpt-4o")
@@ -160,7 +160,7 @@ Anna.request('再往后呢?')  # >>> 5
 ## 轮询 api_key 池
 
 ```python
-from skk.openai import Chat, AKPool
+from skk.openai2 import Chat, AKPool
 
 AK1 = 'sk-ug8w...'
 AK2 = AKPool(['sk-mf40...', 'sk-m6g7...', ...])
@@ -241,7 +241,7 @@ Jenny.request('再往后呢?')  # >>> 4
 利用对话导入功能，可以伪造对话：
 
 ```python
-from skk.openai import Chat, user_msg, assistant_msg
+from skk.openai2 import Chat, user_msg, assistant_msg
 
 Mickey = Chat(api_key=api_key, model="gpt-3.5-turbo")
 
@@ -264,7 +264,7 @@ print(answer)  # >>> 非常抱歉，我刚才的回答有些不适当。1+1=2, 1
 
 ```python
 from pathlib import Path
-from skk.openai import Chat
+from skk.openai2 import Chat
 
 Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
 
@@ -277,7 +277,7 @@ for i, x in enumerate(images):
 返回图片的URL：
 
 ```python
-from skk.openai import Chat
+from skk.openai2 import Chat
 
 Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
 
@@ -294,7 +294,7 @@ for i, url in enumerate(images):
 ```python
 import asyncio
 from pathlib import Path
-from skk.openai import Chat
+from skk.openai2 import Chat
 
 async def main():
     Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
@@ -311,7 +311,7 @@ asyncio.run(main())
 
 ```python
 import asyncio
-from skk.openai import Chat
+from skk.openai2 import Chat
 
 async def main():
     Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
@@ -328,7 +328,7 @@ asyncio.run(main())
 
 ```python
 import json
-from skk.openai import GroupChat
+from skk.openai2 import GroupChat
 
 api_key = '...'  # 更换成自己的 api_key
 group = GroupChat(api_key=api_key, model="gpt-3.5-turbo")
@@ -487,10 +487,10 @@ Ariel.unpin_messages(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 
 ## 更多方法
 
-1、`openai.Chat` 底层调用了 `openai.OpenAI`，支持 `openai.OpenAI` 的所有参数。
+1、`openai2.Chat` 底层调用了 `openai.OpenAI`，支持 `openai.OpenAI` 的所有参数。
 
-2、`openai.Chat.request` 与 `openai.Chat.stream_request` 底层调用了 `openai.OpenAI.chat.completions.create`，支持 `openai.OpenAI.chat.completions.create` 的所有参数。
+2、`openai2.Chat.request` 与 `openai2.Chat.stream_request` 底层调用了 `openai.OpenAI.chat.completions.create`，支持 `openai.OpenAI.chat.completions.create` 的所有参数。
 
-3、`openai.Chat.async_request` 与 `openai.Chat.async_stream_request` 底层调用了 `openai.AsyncOpenAI.chat.completions.create`，支持 `openai.AsyncOpenAI.chat.completions.create` 的所有参数。
+3、`openai2.Chat.async_request` 与 `openai2.Chat.async_stream_request` 底层调用了 `openai.AsyncOpenAI.chat.completions.create`，支持 `openai.AsyncOpenAI.chat.completions.create` 的所有参数。
 
 [查看相关参数](https://platform.openai.com/docs/api-reference/chat) 👈

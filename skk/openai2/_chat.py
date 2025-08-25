@@ -181,7 +181,7 @@ class Chat:
     def request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
         content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
-        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
             'api_key': (api_key := self._akpool.fetch_key()),
@@ -199,7 +199,7 @@ class Chat:
     def stream_request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
         content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
-        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
             'api_key': (api_key := self._akpool.fetch_key()),
@@ -220,7 +220,7 @@ class Chat:
     async def async_request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
         content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
-        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
             'api_key': (api_key := self._akpool.fetch_key()),
@@ -238,7 +238,7 @@ class Chat:
     async def async_stream_request(self, text: str|Multimodal_Part|dict, *speeches, **kwargs):
         content = get_multimodal_content(text, *speeches)
         messages = [{"role": "user", "content": content}]
-        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
         assert messages
         self.recently_request_data = {
             'api_key': (api_key := self._akpool.fetch_key()),
